@@ -39,13 +39,13 @@ func TestStrAtoi(t *testing.T) {
 
 }
 
-func TestStrIf(t *testing.T) {
-	s := Str.If(1 == 1, "a", "b")
+func TestStrIIf(t *testing.T) {
+	s := Str.IIf(1 == 1, "a", "b")
 	if s != "a" {
 		t.Fatalf("error %s", s)
 	}
 
-	s = Str.If(1 == 2, "a", "b")
+	s = Str.IIf(1 == 2, "a", "b")
 	if s != "b" {
 		t.Fatalf("error %s", s)
 	}

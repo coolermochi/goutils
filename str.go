@@ -15,7 +15,7 @@ var Str = str{}
 
 // NVL.
 func (str) NVL(str string, def string) string {
-	return Str.If(str != "", str, def)
+	return Str.IIf(str != "", str, def)
 }
 
 // Atoi.
@@ -33,7 +33,7 @@ func (str) Atoi(str string) int {
 
 // If.
 // 3項演算子.
-func (str) If(flg bool, str1 string, str2 string) string {
+func (str) IIf(flg bool, str1 string, str2 string) string {
 	if flg {
 		return str1
 	} else {
