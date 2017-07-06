@@ -11,11 +11,11 @@ import (
 type str struct{}
 
 // namespace
-var Str = str{}
+var String = str{}
 
 // NVL.
 func (str) NVL(str string, def string) string {
-	return Str.IIf(str != "", str, def)
+	return String.IIf(str != "", str, def)
 }
 
 // Atoi.
@@ -57,12 +57,12 @@ func (str) DecodeB64(b64 string) string {
 
 // EncodeB64URLSafe.
 func (str) EncodeB64URLSafe(str string) string {
-	b64 := Str.EncodeB64(str)
+	b64 := String.EncodeB64(str)
 	return strings.NewReplacer("=", "-", "/", "_", "+", ".").Replace(b64)
 }
 
 // DecodeB64URLSafe.
 func (str) DecodeB64URLSafe(b64 string) string {
 	str := strings.NewReplacer("-", "=", "_", "/", ".", "+").Replace(b64)
-	return Str.DecodeB64(str)
+	return String.DecodeB64(str)
 }

@@ -7,8 +7,8 @@ import (
 func TestCryptPlain(t *testing.T) {
 
 	typo := CryptPlain
-	secret := "hoge"
-	text := "abcdefg"
+	secret := "key"
+	text := "hoge"
 
 	// 暗号化
 	enc := Crypt.Encrypt(typo, secret, text)
@@ -33,8 +33,8 @@ func TestCryptPlain(t *testing.T) {
 func TestCryptB64(t *testing.T) {
 
 	typo := CryptB64
-	secret := "hoge"
-	text := "abcdefg"
+	secret := "key"
+	text := "hoge"
 
 	// 暗号化
 	enc := Crypt.Encrypt(typo, secret, text)
@@ -59,8 +59,8 @@ func TestCryptB64(t *testing.T) {
 func TestCryptB64URLSafe(t *testing.T) {
 
 	typo := CryptB64URLSafe
-	secret := "hoge"
-	text := "abcdefg"
+	secret := "key"
+	text := "hoge"
 
 	// 暗号化
 	enc := Crypt.Encrypt(typo, secret, text)
