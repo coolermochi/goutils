@@ -7,8 +7,9 @@ type integer struct{}
 // namespace
 var Int = integer{}
 
-// NVL.
-func (integer) NVL(i int, def int) int {
+// Def.
+// 0だった場合にデフォルト値返却
+func (integer) Def(i int, def int) int {
 	return Int.IIf(i != 0, i, def)
 }
 

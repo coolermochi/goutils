@@ -7,5 +7,19 @@ func TestNet(t *testing.T) {
 	if err != nil {
 		t.Fatalf("error %+v", err)
 	}
+	if !check {
+		t.Fatal("error")
+	}
 	t.Logf("chack %v", check)
+
+	check, err = Net.Ping("hoge:80")
+	if err != nil {
+		t.Fatalf("error %+v", err)
+	}
+	if check {
+		t.Fatal("error")
+	}
+
+	t.Logf("chack %v", check)
+
 }

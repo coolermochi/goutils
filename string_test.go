@@ -4,24 +4,24 @@ import (
 	"testing"
 )
 
-func TestStrNVL(t *testing.T) {
-	s := String.NVL("a", "b")
+func TestStringDef(t *testing.T) {
+	s := String.Def("a", "b")
 	if s != "a" {
 		t.Fatalf("error %s", s)
 	}
 
-	s = String.NVL("", "b")
+	s = String.Def("", "b")
 	if s != "b" {
 		t.Fatalf("error %s", s)
 	}
 
-	s = String.NVL("", "")
+	s = String.Def("", "")
 	if s != "" {
 		t.Fatalf("error %s", s)
 	}
 }
 
-func TestStrAtoi(t *testing.T) {
+func TestStringAtoi(t *testing.T) {
 	i := String.Atoi("123")
 	if i != 123 {
 		t.Fatalf("error %d", i)
@@ -39,7 +39,7 @@ func TestStrAtoi(t *testing.T) {
 
 }
 
-func TestStrIIf(t *testing.T) {
+func TestStringIIf(t *testing.T) {
 	s := String.IIf(1 == 1, "a", "b")
 	if s != "a" {
 		t.Fatalf("error %s", s)
@@ -51,7 +51,7 @@ func TestStrIIf(t *testing.T) {
 	}
 }
 
-func TestStrB64(t *testing.T) {
+func TestStringB64(t *testing.T) {
 	text := "hoge"
 	enc := String.EncodeB64(text)
 	dec := String.DecodeB64(enc)
@@ -62,7 +62,7 @@ func TestStrB64(t *testing.T) {
 	t.Logf("text:%s enc:%s dec:%s", text, enc, dec)
 }
 
-func TestStrB64URLSafe(t *testing.T) {
+func TestStringB64URLSafe(t *testing.T) {
 	text := "hoge"
 	enc := String.EncodeB64URLSafe(text)
 	dec := String.DecodeB64URLSafe(enc)

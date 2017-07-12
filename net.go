@@ -6,10 +6,12 @@ import (
 	"time"
 )
 
-type network struct {}
+type network struct{}
 
 var Net = network{}
 
+// Ping.
+// ネットワーク確認
 func (network) Ping(ip string) (bool, error) {
 	one := []byte{}
 	conn, err := net.DialTimeout("tcp", ip, time.Second*2)
@@ -22,5 +24,5 @@ func (network) Ping(ip string) (bool, error) {
 		}
 		return true, nil
 	}
-	return false, err
+	return false, nil
 }

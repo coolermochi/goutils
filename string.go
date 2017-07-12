@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"strconv"
 	"strings"
+	"fmt"
 )
 
 // str
@@ -13,8 +14,8 @@ type str struct{}
 // namespace
 var String = str{}
 
-// NVL.
-func (str) NVL(str string, def string) string {
+// Def.
+func (str) Def(str string, def string) string {
 	return String.IIf(str != "", str, def)
 }
 
@@ -31,7 +32,7 @@ func (str) Atoi(str string) int {
 	return i
 }
 
-// If.
+// IIf.
 // 3項演算子.
 func (str) IIf(flg bool, str1 string, str2 string) string {
 	if flg {
@@ -58,11 +59,12 @@ func (str) DecodeB64(b64 string) string {
 // EncodeB64URLSafe.
 func (str) EncodeB64URLSafe(str string) string {
 	b64 := String.EncodeB64(str)
-	return strings.NewReplacer("=", "-", "/", "_", "+", ".").Replace(b64)
+	fmt.Printf("%s\n", b64)
+	return strings.NewReplacer("+", "-", "/", "_", "=", ".").Replace(b64)
 }
 
 // DecodeB64URLSafe.
 func (str) DecodeB64URLSafe(b64 string) string {
-	str := strings.NewReplacer("-", "=", "_", "/", ".", "+").Replace(b64)
+	str := strings.NewReplacer("-", "+", "_", "/", ".", "=").Replace(b64)
 	return String.DecodeB64(str)
 }
