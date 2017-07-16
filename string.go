@@ -3,9 +3,10 @@ package goutils
 
 import (
 	"encoding/base64"
-	"strconv"
-	"strings"
 	"fmt"
+	"strconv"
+	"bytes"
+	//"strings"
 )
 
 // str
@@ -51,6 +52,7 @@ func (str) EncodeB64(str string) string {
 func (str) DecodeB64(b64 string) string {
 	data, err := base64.StdEncoding.DecodeString(b64)
 	if err != nil {
+		fmt.Printf("error DecodeB64 %s\n", err.Error())
 		return ""
 	}
 	return string(data)
@@ -58,13 +60,13 @@ func (str) DecodeB64(b64 string) string {
 
 // EncodeB64URLSafe.
 func (str) EncodeB64URLSafe(str string) string {
-	b64 := String.EncodeB64(str)
-	fmt.Printf("%s\n", b64)
-	return strings.NewReplacer("+", "-", "/", "_", "=", ".").Replace(b64)
+	return base64.RawURLEncoding.EncodeToString([]byte(str))
 }
 
 // DecodeB64URLSafe.
 func (str) DecodeB64URLSafe(b64 string) string {
-	str := strings.NewReplacer("-", "+", "_", "/", ".", "=").Replace(b64)
-	return String.DecodeB64(str)
+	dec := base64.NewDecoder(base64.RawURLEncoding, bytes.NewBufferString(b64))
+	buf := new(bytes.Buffer)
+	buf.ReadFrom(dec)
+	return buf.String()
 }
